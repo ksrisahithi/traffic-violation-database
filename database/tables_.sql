@@ -44,3 +44,16 @@ create table violation(
 desc violation;
 alter table violation add primary key(violation_id);
 
+create table ppl_who_violated(
+    traffic_tkt_no int(10) primary key,
+    reg_no varchar(10),
+    violation_id int(10),
+    traffic_police_id int(10),
+    due date,
+    date_of_violation date,
+    foreign key(reg_no) references vehicle_details(reg_no), 
+    foreign key(violation_id) references violation(violation_id),
+    foreign key(traffic_police_id) references traffic_police(id)
+);
+
+desc ppl_who_violated;
