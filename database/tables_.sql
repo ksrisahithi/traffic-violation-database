@@ -25,3 +25,22 @@ create table vehicle_details(
 );
 
 desc vehicle_details;
+
+create table traffic_police(
+    id int(10) primary key, 
+    name  varchar(20),
+    designation varchar(20),
+    zone_ varchar(20)
+);
+
+desc traffic_police;
+
+create table violation(
+    violation_id int(10),
+    violation_name varchar(40),
+    fine decimal(6, 2)
+);
+
+desc violation;
+alter table violation add primary key(violation_id);
+
