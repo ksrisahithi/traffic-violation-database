@@ -57,3 +57,8 @@ create table ppl_who_violated(
 );
 
 desc ppl_who_violated;
+alter table ppl_who_violated 
+add aadhar_no varchar(20); 
+
+alter table ppl_who_violated
+add foreign key(aadhar_no) references user(aadhar_no);
