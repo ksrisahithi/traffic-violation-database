@@ -2,7 +2,7 @@ create table user(
     aadhar_no varchar(20) primary key,
     passwd varchar(20),
     legal_name varchar(20)
-)
+);
 
 desc user;
 
@@ -71,3 +71,8 @@ modify violation_name varchar(100);
 
 alter table violation 
 modify fine decimal(10, 2);
+
+--queries 
+
+select reg_no, legal_name, A.aadhar_no FROM user A , vehicle_details B WHERE A.aadhar_no = B.aadhar_no;
+select C.reg_no, D.legal_name, D.aadhar_no, B.violation_id, B.fine, A.pay_status from ppl_who_violated A, violation B, vehicle_details C, user D where A.reg_no = C.reg_no and A.violation_id = B.violation_id and C.aadhar_no = D.aadhar_no;
