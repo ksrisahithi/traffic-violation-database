@@ -96,3 +96,11 @@ insert into violation values(93, "WITHOUT CERTIFICATE OF FITNESS", NULL);
 
 --periodic select statement trial run 
 select * from violation;
+
+--inserting values in the users table
+INSERT INTO `user`(`aadhar_no`, `passwd`, `legal_name`) VALUES ('1234 5678 8765','test@123','XYZ');
+INSERT INTO `user`(`aadhar_no`, `passwd`, `legal_name`) VALUES ('1245 9865 3221','test@456','ABC');
+INSERT INTO `user`(`aadhar_no`, `passwd`, `legal_name`) VALUES ('3265 9887 4521','test@789','DEF');
+INSERT INTO `user`(`aadhar_no`, `passwd`, `legal_name`) VALUES ('1265 8732 4598','test@147','PQR');
+
+--inserting values in the traffic_police table
