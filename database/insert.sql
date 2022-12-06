@@ -104,3 +104,14 @@ INSERT INTO `user`(`aadhar_no`, `passwd`, `legal_name`) VALUES ('3265 9887 4521'
 INSERT INTO `user`(`aadhar_no`, `passwd`, `legal_name`) VALUES ('1265 8732 4598','test@147','PQR');
 
 --inserting values in the traffic_police table
+insert into traffic_police values(001,'subbarao','PSI','NORTHEAST');
+insert into traffic_police values(002,'apparao','PI','CENTRAL');
+insert into traffic_police VALUES(003,'venky','ASI','WEST');
+insert into traffic_police values(004,'venkatarao','ASI','SOUTH');
+insert into traffic_police values(005,'Suresh Kumar','PSI','SOUTHEAST');
+insert into traffic_police values(006,'something','ASI','NORTH');
+insert into traffic_police values(007,'jamesbond','ASI','CENTRAL');
+
+--inserting values in the vehicle_details table
+insert into vehicle_details values('KA1234567', '2012-11-04', '1234567890', '890', '1234 5678 8765', '2WN', 'Petrol', 'Activa', '2026-11-30', '2021-11-08', '2021-11-23', NULL, 'Not Available', 'ACTIVE');
+insert into vehicle_details values('KA7894561','2014-12-12','789456123','1470','1234 5678 8765', '4WN','Disel','Kia','2023-12-12','2019-12-12','2020-11-12',NULL,'Not Available','ACTIVE');

@@ -60,17 +60,20 @@ desc ppl_who_violated;
 
 --modifications for value insertions
 
-alter table ppl_who_violated 
-add aadhar_no varchar(20); 
+-- alter table ppl_who_violated 
+-- add aadhar_no varchar(20); 
 
-alter table ppl_who_violated
-add foreign key(aadhar_no) references user(aadhar_no);
+-- alter table ppl_who_violated
+-- add foreign key(aadhar_no) references user(aadhar_no);
 
 alter table violation
 modify violation_name varchar(100);
 
 alter table violation 
 modify fine decimal(10, 2);
+
+alter table ppl_who_violated
+add pay_status boolean;
 
 --queries 
 
