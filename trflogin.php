@@ -1,4 +1,4 @@
-<?php
+<?php //traffic polic login page
     echo("<h1>traffic login</h1>");
 ?>
 <!DOCTYPE html>
@@ -10,12 +10,21 @@
     <title>TRVMS TRAFFIC LOGIN</title>
 </head>
 <body>
-    <button id="myButton" class="float-left submit-button" >back to index</button>
 
+
+    <button id="backtoindex" class="float-left submit-button" >back to index</button>
     <script type="text/javascript">
-        document.getElementById("myButton").onclick = function () {
+        document.getElementById("backtoindex").onclick = function () {
             location.href = "/index.php";
         };
     </script>
+
+    <button id="trfregister" class="float-left submit-button">register</button>
+    <script type="text/javascript">
+        document.getElementById("trfregister").onclick = function () {
+            location.href = "/trfregister.php";
+        };
+    </script>
+
 </body>
 </html>
