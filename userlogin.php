@@ -1,4 +1,4 @@
-<?php
+<?php //user login page
     echo("<h1>user login</h1>");
     echo("<br>");   
 ?>
@@ -11,10 +11,10 @@
     <title>tRVMS USER LOGIN</title>
 </head>
 <body>
-    <button id="myButton" class="float-left submit-button" >back to index</button>
+    <button id="backtoindex" class="float-left submit-button" >back to index</button>
 
     <script type="text/javascript">
-        document.getElementById("myButton").onclick = function () {
+        document.getElementById("backtoindex").onclick = function () {
             location.href = "/index.php";
         };
     </script>
