@@ -71,7 +71,7 @@
         if(!empty($id) && !empty($pwd)){
             //echo($id.$pwd);
             $conn = open_conn();
-            $sql = "SELECT * FROM traffic_police WHERE id = $id AND passwd = '$pwd'";
+            $sql = "SELECT * FROM traffic_police WHERE id = $id AND password = '$pwd'";
             $result = $conn->query($sql);
             if($result->num_rows === 1){
                 session_start();
