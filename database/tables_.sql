@@ -79,3 +79,9 @@ add pay_status boolean;
 
 select reg_no, legal_name, A.aadhar_no FROM user A , vehicle_details B WHERE A.aadhar_no = B.aadhar_no;
 select C.reg_no, D.legal_name, D.aadhar_no, B.violation_id, B.fine, A.pay_status from ppl_who_violated A, violation B, vehicle_details C, user D where A.reg_no = C.reg_no and A.violation_id = B.violation_id and C.aadhar_no = D.aadhar_no;
+
+
+alter table traffic_police add column password varchar(30);
+--update the tables
+update traffic_police set password = "password123" where id = 1;
+update traffic_police set password = "password12345" where id = 2;
