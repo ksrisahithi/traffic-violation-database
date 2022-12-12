@@ -3,11 +3,9 @@
 database before
 ![Screenshot (10)](https://user-images.githubusercontent.com/98043363/206518608-e17873b1-2522-40c2-bcff-b0e35f9c513b.png)
 
-adding into the traffic_police table
-![Screenshot (11)](https://user-images.githubusercontent.com/98043363/206518655-cf6b91a6-6de8-4c7f-a767-7451495b2127.png)
+database now with the hashed passwords
+![Screenshot (15)](https://user-images.githubusercontent.com/98043363/207117747-4deada7d-9d4e-4db8-95c5-10c0a95476bb.png)
+![Screenshot (16)](https://user-images.githubusercontent.com/98043363/207117854-5e991666-e0b8-46f4-b67f-a1abd416bafa.png)
 
-after when we added to the database
-![Screenshot (12)](https://user-images.githubusercontent.com/98043363/206518700-a0d2be03-cb68-45cd-8ba1-5e8b187c0011.png)
-
-the updated database
-![Screenshot (13)](https://user-images.githubusercontent.com/98043363/206518768-0c5305b4-b514-46f4-a7f4-2982c3a1836c.png)
+the form (it dont redirect tho which it should)
+![Screenshot (17)](https://user-images.githubusercontent.com/98043363/207118020-e25cd14c-ec8b-47c9-9e67-9381492bbc11.png)
