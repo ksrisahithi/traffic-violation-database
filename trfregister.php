@@ -40,10 +40,10 @@
                         </select> <br>
                         <label for="pwd" class="form-label">PASSWORD</label><br>
                         <input type="password" name="pwd" id="pwd" class="form-control"><br>
-                        <input type="checkbox" onclick="showPassword()">Show Password<br>
+                        <input type="checkbox" onclick="showPassword('pwd')">Show Password<br>
                         <label for="cnfpwd" class="form-label">CONFIRM PASSWORD</label><br>
                         <input type="password" name="cnfpwd" id="cnfpwd" class="form-control"><br>
-                        <input type="checkbox" onclick="showPassword()">Show Password<br>
+                        <input type="checkbox" onclick="showPassword('cnfpwd')">Show Password<br>
                         <input type="submit" name= "submit" id = "submit" value="submit">
                     </fieldset>
                 </form>
@@ -51,8 +51,8 @@
         </div>
     </div>
     <script>
-        function showPassword() {
-            var x = document.forms["registerform"]['pwd'];
+        function showPassword(pwd) {
+            var x = document.forms["registerform"][pwd];
             if (x.type === "password") {
                 x.type = "text";
             } else {
