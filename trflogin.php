@@ -71,20 +71,20 @@
         if(!empty($id) && !empty($pwd)){
             //echo($id.$pwd);
             $conn = open_conn();
-            $sql = "SELECT * FROM traffic_police WHERE id = $id AND password = '$pwd'";
+            $sql = "SELECT * FROM traffic_police WHERE id = $id";
             $result = $conn->query($sql);
             if($result->num_rows === 1){
                 session_start();
                 echo("the query is working");
                 $row = $result->fetch_assoc();
-                if($id === $row['id'] && $pwd <> $row['password']){
-                    echo("the password is wrong");
-                }
-                elseif($id === $row['id'] && $pwd === $row['password']){
+                if($id === $row['id'] && password_verify($pwd, $row['password'])){
                     $_SESSION['is_login'] = true;
                     $_SESSION['id'] = $id;
                     $_SESSION['name'] = $row['name'];
                     header("Location: trfperson.php");
+                }
+                else{
+                    echo("the password entered is wrong!!<br>");
                 }
             }
             else{
