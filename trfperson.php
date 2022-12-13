@@ -19,6 +19,12 @@
         echo($_SESSION['name']);
         echo("<br>");
     ?>
+    <button id="trfreg" class="float-left submit-button" >add traffic person</button><br>
+    <script type="text/javascript">
+        document.getElementById("trfreg").onclick = function () {
+            location.href = "/trfregister.php";
+        };
+    </script>
     <a href = "trflogout.php">logout</a>
 </body>
 </html>
