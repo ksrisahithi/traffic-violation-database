@@ -123,16 +123,18 @@
                     $sql = "INSERT INTO traffic_police VALUES($id, '$name', '$desg', '$zone_', '$hash_pwd')";
                     $result = $conn->query($sql);
                     if($result){
-                        echo("the thing works<br>");
-                    }
-                    else{
-                        //echo("the thing dont work<br>");
+                        //echo("the thing works<br>");
                         $_SESSION['is_login'] = true;
                         $_SESSION['name'] = $name;
                         $_SESSION['id'] = $id;
-                        //header("Location: trfperson.php"); //<<<---- this should redirect, but it is not working----<<<<<
+                        header("Location: trfperson.php");
+                    }
+                    else{
+                        //echo("the thing dont work<br>");
+                         //<<<---- this should redirect, but it is not working----<<<<<
                         //exit;
-                        echo("<script type='text/javascript'>window.top.location='trfperson.php';</script>"); exit;
+                        //echo("<script type='text/javascript'>window.top.location='trfperson.php';</script>"); exit;
+                        echo("the query didnt work<br>");
                     }
                 }
                 else{
