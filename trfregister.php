@@ -68,6 +68,7 @@
     session_start();
     include "connection.php";
     ob_end_clean();
+    
     if(isset($_POST['submit'])){
         //id validation
         if(!empty($_POST['id'])){
