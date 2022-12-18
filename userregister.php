@@ -1,5 +1,3 @@
-<!-- THE TRAFFIC POLICEMAN REGISTER FORM (DATABASE WORKS!) -->
-<!-- STILL NEED TO STYLE THE PAGE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,43 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
     <script type="text/javascript" src="js/bootstrap.js"></script>
-    <title>TRVMS Traffic Police Registeration</title>
+    <title>TRVMS User Registeration</title>
 </head>
 <body>
 
 <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-sm-6">
-                <form name="registerform" action="trfregister.php" onsubmit = "return validation()" method="post">
+                <form name="registerform" action="userregister.php" onsubmit = "return validation()" method="post">
                     <fieldset class="border p-2">
                         <legend class="float-none w-auto p-2">REGISTER</legend>
-                        <label for="id" class="form-label">ID</label><br>
-                        <input type="text" name="id" id="id" class="form-control"><br>
+                        <label for="aadharno" class="form-label">AADHAR NUMBER:</label><br>
+                        <input type="text" name="aadharno" id="aadharno" class="form-control"><br>
                         <label for="name" class="form-label">NAME</label><br>
                         <input type="text" name="name" id="name" class="form-control"><br>
-                        <label for="desg" class="form-label">DESIGNATION</label><br>
-                        <select name="desg" id="desg" class="form-select">
-                            <option value="asi">ASI</option>
-                            <option value="psi">PSI</option>
-                            <option value="pi">PI</option>
-                            <option value="dgp">DGP</option>
-                        </select> <br>
-                        <label for="zone" class="form-label">ZONE</label><br>
-                        <select name="zone" id="zone" class="form-select">
-                            <option value="north">NORTH</option>
-                            <option value="south">SOUTH</option>
-                            <option value="northeast">NORTHEAST</option>
-                            <option value="southeast">SOUTHEAST</option>
-                            <option value="west">WEST</option>
-                            <option value="central">CENTRAL</option>
-                        </select> <br>
                         <label for="pwd" class="form-label">PASSWORD</label><br>
                         <input type="password" name="pwd" id="pwd" class="form-control"><br>
                         <input type="checkbox" onclick="showPassword('pwd')">Show Password<br>
                         <label for="cnfpwd" class="form-label">CONFIRM PASSWORD</label><br>
                         <input type="password" name="cnfpwd" id="cnfpwd" class="form-control"><br>
                         <input type="checkbox" onclick="showPassword('cnfpwd')">Show Password<br>
-                        <input type="submit" name= "submit" id = "submit" value="submit">
+                        <input type="submit" name= "register" id = "register" value="Register">
                     </fieldset>
                 </form>
             </div>
@@ -64,28 +46,37 @@
 </body>
 </html>
 <?php
-    ob_start();
     session_start();
+    ob_start();
     include "connection.php";
     ob_end_clean();
-    
-    if(isset($_POST['submit'])){
-        //id validation
-        if(!empty($_POST['id'])){
-            if (!preg_match ("/^[0-9]*$/", $_POST['id']) ){  
+
+    function  aadhar($aadharno){
+        if($string = ""){
+            return;
+        }
+        else{
+            $temp = $aadharno;
+            $temp = strval($temp);
+            $temp = str_replace(" ", "", $temp);
+            //$temp = intval($temp);
+            return $temp;
+        }
+    }
+
+    if(isset($_POST['register'])){
+        echo("hello the register button has been pressed<br>");
+        if(!empty($_POST['aadharno'])){
+            //$temp = aadhar($_POST['aadharno']);
+            if (!preg_match ("/^[0-9]*$/", aadhar($_POST['aadharno'])) ){  
                 $ErrMsg = "Only numeric value is allowed for id.";  
                 echo $ErrMsg;
                 session_destroy();  
             } else {  
-                $id = $_POST['id'];
-                //echo($id."<br>"); 
+                $aadharno = aadhar($_POST['aadharno']);
+                //echo($aadharno."<br>");
             } 
         }
-        else{
-            echo("the id field cant be empty");
-        }
-
-        //name validation OK BRO THIS TING WORKS SOMEWHAT// BUT YOU CANNOT PUT FULL NAME WITH WHITESPACES
         if(!empty($_POST['name'])){
             if (!preg_match ("/^[a-zA-z]*$/", $_POST['name'])) {  
                 $ErrMsg = "Only alphabets and whitespace are allowed.";  
@@ -93,24 +84,10 @@
                 session_destroy();
             } else {  
                 $name = $_POST['name'];
-                //$name = trim($name);
-                //$name = stripslashes($name);
-                //$name = htmlspecialchars($name);
-                echo($name."<br>");
+                //echo($name."<br>");
             } 
         }
-        else{
-            echo("the name field cant be empty");
-        }
-
-        //zone
-        $zone_ = $_POST['zone'];
-        //echo($zone_."<br>");
-        //designation
-        $desg = $_POST['desg'];
-
-        //password validation
-        if($id && $name){
+        if($aadharno && $name){
             if(!empty($_POST['pwd']) && !empty($_POST['cnfpwd'])){
                 $pwd = $_POST['pwd'];
                 $cnfpwd = $_POST['cnfpwd'];
@@ -121,14 +98,14 @@
                 if(password_verify($pwd, $hash_pwd) === password_verify($cnfpwd, $hash_pwd)){
                     echo("the passwords match<br>");
                     $conn = open_conn();
-                    $sql = "INSERT INTO traffic_police VALUES($id, '$name', '$desg', '$zone_', '$hash_pwd')";
+                    $sql = "INSERT INTO user VALUES('$aadharno', '$hash_pwd', '$name')";
                     $result = $conn->query($sql);
                     if($result){
                         //echo("the thing works<br>");
                         $_SESSION['is_login'] = true;
                         $_SESSION['name'] = $name;
-                        $_SESSION['id'] = $id;
-                        header("Location: trfperson.php");
+                        $_SESSION['aadharno'] = $aadharno;
+                        header("Location: user.php");
                     }
                     else{
                         //echo("the thing dont work<br>");
@@ -154,9 +131,6 @@
                 echo("dont let the passwords field empty<br>");
                 session_destroy();
             }
-        }
-        else{
-            echo("dont leave the id or the name field empty<br>");
         }
     }
 ?>

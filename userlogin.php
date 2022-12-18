@@ -35,21 +35,13 @@
                             <option value="central">CENTRAL</option>
                         </select> <br>
 -->
-                        <input type="submit" name= "submit" id = "submit" value="submit">
+                        <input type="submit" name= "submit" id = "submit" value="submit"><br>
+                        <a href = "userregister.php">Register if new</a>
                     </fieldset>
                 </form>
             </div>
         </div>
     </div>
-    <script>
-        function validation() {
-            var id = document.forms["loginform"]["aadharno"].value;
-            if(!/^[0-9]+$/.test(id)){
-                alert("enter a valid aadhar number");
-            }
-        }
-    </script>
-
     <button id="backtoindex">back to index</button>
     <script type="text/javascript">
         document.getElementById("backtoindex").onclick = function () {
@@ -62,23 +54,49 @@
     ob_start();
     include "connection.php";
     ob_end_clean();
+    function  aadhar($aadharno){
+        if($string = ""){
+            return;
+        }
+        else{
+            $temp = $aadharno;
+            $temp = strval($temp);
+            $temp = str_replace(" ", "", $temp);
+            //$temp = intval($temp);
+            return $temp;
+        }
+    }
     if(isset($_POST['submit'])){
-        $aadharno = $_POST['aadharno'];
-        $aadharno = trim($aadharno);
+        $aadharno = aadhar($_POST['aadharno']);
         $pwd = $_POST['pwd'];
         if(!empty($aadharno) && !empty($pwd)){
-            $conn= open_conn();
-            $sql = "SELECT * FROM user WHERE aadhar_no = $aadharno AND passwd = '$pwd'";
+            $conn = open_conn();
+            $sql = "SELECT * FROM user where aadhar_no = '$aadharno'";
             $result = $conn->query($sql);
             if($result->num_rows === 1){
-                echo("the query is working");
+                session_start();
+                echo("the query worked<br>");
+                $row = $result->fetch_assoc();
+                if($aadharno === $row['aadhar_no'] && password_verify($pwd, $row['passwd'])){                    
+                    //echo("there is the user<br>");
+                    $_SESSION['is_login'] = true;
+                    $_SESSION['aadhar_no'] = $row['aadhar_no'];
+                    $_SESSION['legal_name'] = $row['legal_name'];
+                    //echo("the fetching did work");
+                    //echo($_SESSION['aadhar_no']);
+                    header("Location: user.php");
+                }
+                else{
+                    echo("the user dont exist<br>");
+                    echo("register as a new user");
+                }
             }
             else{
-                echo("the query is not working");
+                echo("the query dont work<br>");
             }
         }
         else{
-            echo("enter the details");
+            echo("enter the fields");
         }
     }
 ?>
