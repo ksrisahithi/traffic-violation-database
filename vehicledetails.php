@@ -1,4 +1,4 @@
-<!-- TEMP-->
+<!-- TEMP bro please work on tis shit-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,64 +14,88 @@
         border-collapse: collapse;
         font-size:12px;
         }
+
+        #regtable {
+            border: none;
+        }
+        #regno {
+            width : 260 px
+        }
     </style>
 </head>
 <body>
-    <?php
-        session_start();
-        echo("<h3>VEHICLES DETAILS<br>");
-        ob_start();
-        include "connection.php";
-        ob_end_clean();
-        //echo($_SESSION['id']."<br>");
-        if(!isset($_SESSION['id'])){
-            header("Location: trflogin.php");
-            die();
+    <p>enter the register number
+    <div class = "container-lg">
+        <form name = "regno" action = "vehicledetails.php" method = "POST">
+            <label for = "reg" class = "form label">RegNo</label><br>
+                <input type = "text" name = "state" id = "state" maxlength = "2" size = "2">
+                <input type="text" name="no" id = "no" maxlength = "2" size = "2">
+                <input type="text" name="somed" id = "somed" maxlength = "2" size = "2">
+                <input type="text" name="no1" id= "no1" maxlength = "4" size = "2"><br><br>
+                <input type="submit" name= "submit" id = "submit" value="submit">
+        </form>
+    </div>
+    
+<?php
+    ob_start();
+    include "connection.php";
+    ob_end_clean();
+    if(isset($_POST['submit'])){
+        if(empty($_POST['state']) && empty($_POST['no']) && empty($_POST['somed']) && empty($_POST['no1']) && !is_int($_POST['no']) && !is_int($_POST['no1'])) {
+            echo("enter the valid details");
         }
-        $conn = open_conn();
-        $sql = "SELECT * FROM vehicle_details";
-        $result = $conn->query($sql);      
-    ?>
-    <table cellspacing = "2" cellpadding = "2">
-        <tr>
-            <th style=font-size:12px>REGISTER NUMBER</th>
-            <th style=font-size:12px>REGISTERATION DATE</th>
-            <th style=font-size:12px>CHASSIS NUMBER</th>
-            <th style=font-size:12px>ENGINE NUMBER</th>
-            <th style=font-size:12px>AADHAR NUMBER</th>
-            <th style=font-size:12px>VEHICLE CLASS</th>
-            <th style=font-size:12px>FUEL TYPE</th>
-            <th style=font-size:12px>MODEL</th>
-            <th style=font-size:12px>REGISTERATION VALIDITY</th>
-            <th style=font-size:12px>MV TAX VALIDITY</th>
-            <th style=font-size:12px>INSURANCE VALIDITY</th>
-            <th style=font-size:12px>PUCC VALIDITY</th>
-            <th style=font-size:12px>EMISSION NORMS</th>
-            <th style=font-size:12px>RC STATUS</th>
-        </tr>
-        <?php
+        else {
+            $state = strtolower($_POST['state']);
+            $no = $_POST['no'];
+            $somed = strtolower($_POST['somed']);
+            $no1 = $_POST['no1'];
+            $regno = $state.$no.$somed.$no1;
+            $conn = open_conn();
+            $sql = "SELECT * FROM vehicle_details where reg_no = '$regno'";
+            $result = $conn->query($sql);
             if($result){
-                while($row = $result->fetch_assoc()){
-                    echo("<tr>");
-                    echo("<td>".$row['reg_no']."</td>");
-                    echo("<td>".$row['reg_date']."</td>");
-                    echo("<td>".$row['chassis_no']."</td>");
-                    echo("<td>".$row['engine_no']."</td>");
-                    echo("<td>".$row['aadhar_no']."</td>");
-                    echo("<td>".$row['vehicle_class']."</td>");
-                    echo("<td>".$row['fuel']."</td>");
-                    echo("<td>".$row['model']."</td>");
-                    echo("<td>".$row['regn_upto']."</td>");
-                    echo("<td>".$row['mv_tax_upto']."</td>");
-                    echo("<td>".$row['insurance_upto']."</td>");
-                    echo("<td>".$row['pucc_upto']."</td>");
-                    echo("<td>".$row['emission_norms']."</td>");
-                    echo("<td>".$row['rc_status']."</td>");
-                }
-                $result->free();
+                //styling this is required
+                $row = $result->fetch_assoc();
+                echo("<table cellspacing = \"2\" cellpadding = \"2\">
+                        <tr>
+                            <th style=font-size:12px>REGISTER NUMBER</th>
+                            <th style=font-size:12px>REGISTERATION DATE</th>
+                            <th style=font-size:12px>CHASSIS NUMBER</th>
+                            <th style=font-size:12px>ENGINE NUMBER</th>
+                            <th style=font-size:12px>AADHAR NUMBER</th>
+                            <th style=font-size:12px>VEHICLE CLASS</th>
+                            <th style=font-size:12px>FUEL TYPE</th>
+                            <th style=font-size:12px>MODEL</th>
+                            <th style=font-size:12px>REGISTERATION VALIDITY</th>
+                            <th style=font-size:12px>MV TAX VALIDITY</th>
+                            <th style=font-size:12px>INSURANCE VALIDITY</th>
+                            <th style=font-size:12px>PUCC VALIDITY</th>
+                            <th style=font-size:12px>EMISSION NORMS</th>
+                            <th style=font-size:12px>RC STATUS</th>
+                        </tr>
+                        <tr>
+                            <td>".$row['reg_no']."</td>
+                            <td>".$row['reg_date']."</td>
+                            <td>".$row['chassis_no']."</td>
+                            <td>".$row['engine_no']."</td>
+                            <td>".$row['aadhar_no']."</td>
+                            <td>".$row['vehicle_class']."</td>
+                            <td>".$row['fuel']."</td>
+                            <td>".$row['model']."</td>
+                            <td>".$row['regn_upto']."</td>
+                            <td>".$row['mv_tax_upto']."</td>
+                            <td>".$row['insurance_upto']."</td>
+                            <td>".$row['pucc_upto']."</td>
+                            <td>".$row['emission_norms']."</td>
+                            <td>".$row['rc_status']."</td>
+                        </tr>");
             }
-        ?>
-    </table><br>
+            else {
+                echo("the query is not working");
+            }
+        }
+    }
+?>
     <button id="back">Back</button>
     <script type="text/javascript">
         document.getElementById("back").onclick = function () {
