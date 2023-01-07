@@ -37,7 +37,7 @@
             //create a form and include the required fields for ppl who violated table
             //initialize them into php and then execute a query for inserting all those initialized value into the table
             //should also work on the sorting of this list and stuff but for now this much is enough ig
-            echo("this button works<br>");
+            header("Location: addpplwhoviolated.php");
         }
     ?>
     <input type = "submit" name = "rm" value = "REMOVE ppl who violated"/><br><br>
