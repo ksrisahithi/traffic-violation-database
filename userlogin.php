@@ -42,19 +42,9 @@
 <?php
     ob_start();
     include "connection.php";
+    include "formvalidations.php";
     ob_end_clean();
-    function  aadhar($aadharno){
-        if($string = ""){
-            return;
-        }
-        else{
-            $temp = $aadharno;
-            $temp = strval($temp);
-            $temp = str_replace(" ", "", $temp);
-            //$temp = intval($temp);
-            return $temp;
-        }
-    }
+
     if(isset($_POST['submit'])){
         $aadharno = aadhar($_POST['aadharno']);
         $pwd = $_POST['pwd'];
