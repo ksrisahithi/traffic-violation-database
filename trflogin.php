@@ -1,45 +1,42 @@
-<?php //traffic polic login page
-    echo("<h1>traffic login</h1>");
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
-    <!-- <link rel="stylesheet" href="css/trflogin.css"> -->
+    <link rel="stylesheet" href="css/trlogin.css">
     <title>TRVMS TRAFFIC LOGIN</title>
 </head>
 <body>
-    <div class="container-lg">
-        <div class="row justify-content-center">
-            <div class="col-sm-6">
-                <form name="loginform" action="trflogin.php" onsubmit = "return validation()" method="post">
-                    <fieldset class="border p-2">
-                        <legend class="float-none w-auto p-2">LOGIN</legend>
-                        <label for="id" class="form-label">ID</label><br>
-                        <input type="text" name="id" id="id" class="form-control"><br>
-                        <label for="pwd" class="form-label">PASSWORD</label><br>
-                        <input type="password" name="pwd" id="pwd" class="form-control"><br>
-<!-- 
-                        <label for="zone" class="form-label">Zone</label><br>
-                        <select name="zone" id="zone" class="form-select">
-                            <option value="north">NORTH</option>
-                            <option value="south">SOUTH</option>
-                            <option value="northeast">NORTHEAST</option>
-                            <option value="southeast">SOUTHEAST</option>
-                            <option value="west">WEST</option>
-                            <option value="central">CENTRAL</option>
-                        </select> <br>
--->
-                        <input type="submit" name= "submit" id = "submit" value="submit">
-                    </fieldset>
-                </form>
-            </div>
+    <header>
+        <a href="index.php"><img src="/assests/logo.png" alt="Logo" id="logo"></a>
+        <div id="links">
+            <a href="#" class="nav-btn">About</a>
+            <a href="#" class="nav-btn">Source Code</a>
         </div>
+    </header>
+    <div id="content">
+        <div id="form-box">
+            <h1>Hi! Welcome back.</h1>
+            <form name="loginform" action="trflogin.php" onsubmit = "return validation()" method="post">
+                <label for="id">ID</label><br>
+                <div class="input-box">
+                    <input type="text" name="id" id="id">
+                </div>
+                <label for="pwd">PASSWORD</label><br>
+                <div class="input-box">
+                    <input type="password" name="pwd" id="pwd"> 
+                </div>
+                <div class="input-box">
+                    <input type="submit" name= "submit" id = "submit" value="Login">
+                </div>
+            </form>
+        </div>
+        <img src="assests/7514770.jpg" alt="" id="img-box">
     </div>
+    <a href="index.php" id="back2index">Back To Landing Page</a>
+
+
     <script>
         function validation() {
             var id = document.forms["loginform"]["id"].value;
@@ -47,13 +44,6 @@
                 alert("enter a valid id number");
             }
         }
-    </script>
-
-    <button id="backtoindex">back to index</button>
-    <script type="text/javascript">
-        document.getElementById("backtoindex").onclick = function () {
-            location.href = "/index.php";
-        };
     </script>
 </body>
 </html>

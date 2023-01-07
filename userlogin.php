@@ -1,53 +1,42 @@
-<?php //user login page
-    echo("<h1>user login</h1>");
-    echo("<br>");   
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
-    <!-- <link rel="stylesheet" href="css/trflogin.css"> -->
+    <link rel="stylesheet" href="css/usrlogin.css">
+    <script src="https://kit.fontawesome.com/2182b01a00.js" crossorigin="anonymous"></script>
     <title>TRVMS USER LOGIN</title>
 </head>
 <body>
-    <div class="container-lg">
-        <div class="row justify-content-center">
-            <div class="col-sm-6">
-                <form name="loginform" action="userlogin.php" onsubmit = "return validation()" method="post">
-                    <fieldset class="border p-2">
-                        <legend class="float-none w-auto p-2">LOGIN</legend>
-                        <label for="aadharno" class="form-label">AADHAR NUMBER:</label><br>
-                        <input type="text" name="aadharno" id="aadharno" class="form-control"><br>
-                        <label for="pwd" class="form-label">PASSWORD</label><br>
-                        <input type="password" name="pwd" id="pwd" class="form-control"><br>
-<!-- 
-                        <label for="zone" class="form-label">Zone</label><br>
-                        <select name="zone" id="zone" class="form-select">
-                            <option value="north">NORTH</option>
-                            <option value="south">SOUTH</option>
-                            <option value="northeast">NORTHEAST</option>
-                            <option value="southeast">SOUTHEAST</option>
-                            <option value="west">WEST</option>
-                            <option value="central">CENTRAL</option>
-                        </select> <br>
--->
-                        <input type="submit" name= "submit" id = "submit" value="submit"><br>
-                        <a href = "userregister.php">Register if new</a>
-                    </fieldset>
-                </form>
-            </div>
+    <header>
+        <a href="index.php"><img src="/assests/logo.png" alt="Logo" id="logo"></a>
+        <div id="links">
+            <a href="#" class="nav-btn">About</a>
+            <a href="#" class="nav-btn">Source Code</a>
         </div>
+    </header>
+    <div id="content">
+        <div id="form-box">
+            <h1>Hi! Welcome back</h1>
+            <form name="loginform" action="userlogin.php" onsubmit = "return validation()" method="post">
+                <label for="aadharno">Aadhar Number</label><br>
+                <div class="input-box">
+                    <input type="text" name="aadharno" id="aadharno">
+                </div>
+                <label for="pwd">Password</label><br>
+                <div class="input-box">
+                    <input type="password" name="pwd" id="pwd">
+                </div>
+                <div class="input-box">
+                    <input type="submit" name= "submit" id = "submit" value="Login">
+                </div>
+                <p id="sign-up">Don't have an account? <a href = "userregister.php">Sign Up</a></p>
+            </form>
+        </div>
+        <img src="assests/6387974.jpg" alt="" id="img-box">
     </div>
-    <button id="backtoindex">back to index</button>
-    <script type="text/javascript">
-        document.getElementById("backtoindex").onclick = function () {
-            location.href = "/index.php";
-        };
-    </script>
+    <a href="index.php" id="back2index"> Back To Landing Page</a>
 </body>
 </html>
 <?php

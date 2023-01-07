@@ -14,42 +14,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/trfperson.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Traffic admin</title>
 </head>
 <body>
-    <?php 
-        //session_start();
-        //$_SESSION['is_login'] = true;
+    <!-- <?php 
         echo($_SESSION['id']);
         echo("<br>");
         echo($_SESSION['name']);
         echo("<br>");
-        //$_SESSION['id'] = $_SESSION['id'];
-    ?>
-    <button id="trfreg" class="float-left submit-button" >add traffic person</button><br><br>
-    <script type="text/javascript">
-        document.getElementById("trfreg").onclick = function () {
-            location.href = "/trfregister.php";
-        };
-    </script>
-    <button id = "vehicledetails" class="float-left submit-button">view vehicle details</button><br><br>
-    <script type="text/javascript">
-        document.getElementById("vehicledetails").onclick = function(){
-            location.href = "/vehicledetails.php";
-        }
-    </script>
-    <button id = "ppl" class="float-left submit-button">add/delete people who violated</button><br><br>
-    <script type="text/javascript">
-        document.getElementById("ppl").onclick = function(){
-            location.href = "/pplwhoviolated.php";
-        }
-    </script>
-    <button id = "view" class="float-left submit-button">view traffic police</button><br><br>
-    <script type="text/javascript">
-        document.getElementById("view").onclick = function(){
-            location.href = "/trafficpolice.php";
-        }
-    </script>
-    <a href = "trflogout.php">logout</a>
+    ?> -->
+    <header>
+        <div class="loti">
+            <a href="index.php"><img src="/assests/logo.png" alt="Logo" id="logo"></a>
+            <h1>Officer Dashboard</h1>
+        </div>
+        <div class="whitespace"></div>
+        <div class="dets">
+            <p><span class="thin">Name : </span><span class="thick"><?php echo($_SESSION['name']);?></span></p>
+            <p><span class="thin">ID : </span><span class="thick"><?php echo($_SESSION['id']);?></span></p>
+        </div>
+        <div id="links">
+            <a href="trflogout.php" class="nav-btn">logout</a>
+        </div>
+    </header>
+    <div class="content">
+        <div class="card">
+            <img src="assests/pngaaa.com-3777426.png" alt="">
+            <p>Add new traffic police officer to the database.</p>
+            <a href="trfregister.php">add traffic police</a>
+        </div>
+        <div class="card">
+            <img src="assests/6387974.jpg" alt="">
+            <p>View user's vehicle details.</p>
+            <a href="vehicledetails.php">view vehicle details</a>
+        </div>
+        <div class="card">
+            <img src="assests/pngaaa.com-3777426.png" alt="">
+            <p>View registered traffic police officer details.</p>
+            <a href="trafficpolice.php">view traffic police</a>
+        </div>
+        <div class="card">
+            <img src="assests/6387982.jpg" alt="">
+            <p>Issue traffic violation fines or view violations.</p>
+            <a href="pplwhoviolated.php">view/add violations</a>
+        </div>
+    </div>
 </body>
 </html>
