@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body {
+    background-color: rgb(60, 60, 60);
+} */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em 1em 1em;
+}
+
+#logo {
+    height: 80px;
+}
+
+#links {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.nav-btn {
+    padding: .5em 1em;
+    background-color: transparent;
+    color: black;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2.5px solid black;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#content {
+    display: flex;
+    width: 100%;
+    height: calc(1vh-calc(80px+2em));
+    align-items: center;
+    /* text-align: center; */
+    padding-right: 2em;
+}
+
+#txt-box {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    /* align-items: center; */
+    gap: 2em;
+    padding-left: 2em;
+}
+
+#txt-box h1 {
+    font-family: 'Secular One', sans-serif;
+    font-size: 60px;
+    line-height: 1em;
+}
+
+#violation {
+    color: rgb(207, 6, 6);
+}
+
+#txt-box p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
+
+}
+
+#btns {
+    display: flex;
+    gap: 1em;
+}
+
+.m-btn {
+    padding: 0.75em 1em;
+    background-color: rgb(207, 6, 6);
+    color: white;
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-weight: 600; */
+    border-radius: 25px;
+}
+
+#img-box {
+    width: 50%;
+}
+

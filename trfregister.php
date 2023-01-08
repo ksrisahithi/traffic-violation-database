@@ -67,12 +67,13 @@
     ob_start();
     session_start();
     include "connection.php";
+    include "formvalidations.php";
     ob_end_clean();
     
     if(isset($_POST['submit'])){
         //id validation
         if(!empty($_POST['id'])){
-            if (!preg_match ("/^[0-9]*$/", $_POST['id']) ){  
+            if (!id_validation($_POST['id'])){  
                 $ErrMsg = "Only numeric value is allowed for id.";  
                 echo $ErrMsg;
                 session_destroy();  
@@ -87,7 +88,7 @@
 
         //name validation OK BRO THIS TING WORKS SOMEWHAT// BUT YOU CANNOT PUT FULL NAME WITH WHITESPACES
         if(!empty($_POST['name'])){
-            if (!preg_match ("/^[a-zA-z]*$/", $_POST['name'])) {  
+            if (!name_validation($_POST['name'])) {  
                 $ErrMsg = "Only alphabets and whitespace are allowed.";  
                 echo($ErrMsg);  
                 session_destroy();

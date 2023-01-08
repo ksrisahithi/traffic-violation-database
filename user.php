@@ -25,3 +25,13 @@
     <a href = "trflogout.php">logout</a>
 </body>
 </html>
+
+<?php
+    $aadhar_no = $_SESSION['aadhar_no'];
+    $conn = open_conn();
+    $sql = "SELECT aadhar_no FROM ppl_who_violated WHERE aadhar_no = $aadhar_no";
+    $result = $conn->query($sql);
+    if($result){
+        echo("<br>you have been booked for the violations");
+    }
+?>
