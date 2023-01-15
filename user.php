@@ -69,7 +69,8 @@
                 if(password_verify($password, $row['passwd'])){
                     echo("you are authenticated<br>");
                     echo("these are the violations that you have committed<br>");
-                    $sql = "SELECT ppl_who_violated.violation_id, violation_name, fine
+                    echo("in the order ticket no|| violation id|| violation name|| fine<br>");
+                    $sql = "SELECT ppl_who_violated.traffic_tkt_no, ppl_who_violated.violation_id, violation_name, fine
                             FROM violation, ppl_who_violated 
                             WHERE ppl_who_violated.violation_id = violation.violation_id
                             AND ppl_who_violated.aadhar_no = $aadhar_no
@@ -78,6 +79,7 @@
                     if($res->num_rows > 0){
                         while($row = $res->fetch_assoc()){
                             echo("<tr>
+                                <td>".$row['traffic_tkt_no']."</td>
                                 <td>".$row['violation_id']."</td>
                                 <td>".$row['violation_name']."</td>
                                 <td>".$row['fine']."</td>

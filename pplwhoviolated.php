@@ -1,4 +1,4 @@
-<?php 
+<?php //------->>>>>>>AFTER THE TRAFFIC POLICE'S DASH <<<<<<<<<<-----
     ob_start();
     session_start();
     require "connection.php";
@@ -17,6 +17,7 @@
     <input type="submit" name="view" value="VIEW ppl who violated"/><br><br>
     <?php  
         if(isset($_POST['view'])){
+            /*
             $conn = open_conn();
             //revise the query
             $sql = "SELECT p.traffic_tkt_no, p.reg_no, p.violation_id, q.violation_name FROM ppl_who_violated p, violation q WHERE p.violation_id = q.violation_id";
@@ -29,6 +30,8 @@
                 echo($conn->error."<br>");
             }
             close_conn($conn);
+            */
+            header("Location: viewpplwhoviolated.php");
         }
     ?>
     <input type = "submit" name = "add" value = "ADD ppl who violated"/><br><br>
@@ -45,7 +48,7 @@
         if(isset($_POST['rm'])){
             //this should just include the register number or some primary key initialization and then
             //its just removing nothing much
-            echo("this button also works<br>");
+            header("Location: rmpplwhoviolated.php");
         }
     ?>
     </form>
