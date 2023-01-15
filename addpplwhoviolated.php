@@ -63,8 +63,8 @@
                         <input type="date" name="due" id="due" class="form-control"><br>
                         <label for="date_of_violation" class="form-label">DATE OF VIOLATION RECORDED</label><br>
                         <input type="date" name="date_of_violation" id="date_of_violation" class="form-control"><br>
-                        <label for="aadhar_no" class="form-label">ENTER THE AADHAR NO OF THE BOOKED:</label><br>
-                        <input type="text" name="aadhar_no" id="aadhar_no" class="form-control"><br>
+                        <!-- <label for="aadhar_no" class="form-label">ENTER THE AADHAR NO OF THE BOOKED:</label><br>
+                        <input type="text" name="aadhar_no" id="aadhar_no" class="form-control"><br> -->
                         <input type="submit" name= "submit" id = "submit" value="submit">
                     </fieldset>
                 </form>
@@ -88,15 +88,15 @@
             echo("enter a valid ticket number");
         }
 
-        if(!empty($_POST['aadhar_no'])){
-            if(aadhar_validation($_POST['aadhar_no'])){
-                $aadhar_no = $_POST['aadhar_no'];
-                //echo($aadhar_no);
-            }
-            else{
-                echo("invalid aadhar number<br>");
-            }
-        }
+        // if(!empty($_POST['aadhar_no'])){
+        //     if(aadhar_validation($_POST['aadhar_no'])){
+        //         $aadhar_no = $_POST['aadhar_no'];
+        //         //echo($aadhar_no);
+        //     }
+        //     else{
+        //         echo("invalid aadhar number<br>");
+        //     }
+        // }
         if(empty($_POST['state']) && empty($_POST['no']) && empty($_POST['somed']) && empty($_POST['no1']) && !is_int($_POST['no']) && !is_int($_POST['no1'])) {
             echo("enter the valid details");
         }
@@ -147,7 +147,7 @@
             echo("dont leave the date of violation field empty");
         }
         $conn = open_conn();
-        $sql = "INSERT INTO ppl_who_violated VALUES($traffic_tkt_no, '$regno', $violation_id, $traffic_polic_id, '$due', '$date_of_violation', $aadhar_no)";
+        $sql = "INSERT INTO ppl_who_violated VALUES($traffic_tkt_no, '$regno', $violation_id, $traffic_polic_id, '$due', '$date_of_violation',0)";
         $result = $conn->query($sql);
         if($result){
             echo("<script>
@@ -156,6 +156,7 @@
             </script>");
         }
         else{
+            echo("error");
             echo($conn->error);
         }
     }

@@ -29,7 +29,7 @@
     echo("hi ".$_SESSION['legal_name']."<br>");
     echo($aadhar_no);
     $conn = open_conn();
-    $sql = "SELECT aadhar_no FROM ppl_who_violated WHERE aadhar_no = $aadhar_no AND pay_status = 0";
+    $sql = "SELECT aadhar_no from vehicle_details v JOIN ppl_who_violated p on p.reg_no = v.reg_no and p.pay_status = 0 WHERE aadhar_no = $aadhar_no;";
     $result = $conn->query($sql);
     if($result->num_rows > 0){
         echo("<br>you have been booked for the violations<br>");
@@ -70,11 +70,13 @@
                     echo("you are authenticated<br>");
                     echo("these are the violations that you have committed<br>");
                     echo("in the order ticket no|| violation id|| violation name|| fine<br>");
-                    $sql = "SELECT ppl_who_violated.traffic_tkt_no, ppl_who_violated.violation_id, violation_name, fine
-                            FROM violation, ppl_who_violated 
-                            WHERE ppl_who_violated.violation_id = violation.violation_id
-                            AND ppl_who_violated.aadhar_no = $aadhar_no
-                            AND ppl_who_violated.pay_status = 0";
+                    $sql = "SELECT p.traffic_tkt_no, p.violation_id, violation_name, fine 
+                    from violation v, ppl_who_violated p 
+                    where v.violation_id = p.violation_id 
+                    and p.reg_no = (select reg_no 
+                                    from vehicle_details d 
+                                    WHERE d.aadhar_no = $aadhar_no)
+                    and p.pay_status = 0;";
                     $res = $conn->query($sql);
                     if($res->num_rows > 0){
                         while($row = $res->fetch_assoc()){

@@ -31,7 +31,7 @@
         $sql = "SELECT traffic_tkt_no, legal_name, ppl_who_violated.reg_no, violation_name
                 FROM ppl_who_violated, user, vehicle_details, violation
                 WHERE ppl_who_violated.pay_status = 1
-                AND ppl_who_violated.aadhar_no = user.aadhar_no
+                AND vehicle_details.aadhar_no = user.aadhar_no
                 AND ppl_who_violated.violation_id = violation.violation_id
                 AND ppl_who_violated.reg_no = vehicle_details.reg_no";
         $result = $conn->query($sql);
@@ -57,7 +57,8 @@
             echo("<br>");            
         }
         else{
-            echo($conn->error);
+            // echo($conn->error);
+            echo("no violations");
         }
     }
     ?>
