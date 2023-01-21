@@ -128,7 +128,7 @@
         $conn = open_conn();
         $sql = "SELECT aadhar_no from vehicle_details v JOIN ppl_who_violated p on p.reg_no = v.reg_no and p.pay_status = 0 WHERE aadhar_no = $aadhar_no;";
         $result = $conn->query($sql);
-        if($result->num_rows > 0){
+        if($result){
             echo("<script>document.getElementById('uMsg').innerHTML = 'You have been booked for the violations<br>Click below to pay the fine'</script>");
             $showDivFlag=true;
         }
