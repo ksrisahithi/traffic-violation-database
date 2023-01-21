@@ -1,4 +1,4 @@
-<?php //just have to find a way for making the user see whether the user is booked or not then its fine!
+<?php 
     ob_start();
     session_start();
     require "connection.php";
@@ -13,9 +13,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/violation.css">
     <title>VIOLATIONS DETAILS</title>
 </head>
 <body>
+    <header>
+        <div class="loti">
+            <a href="index.php"><img src="assests/logo.png" alt="Logo" id="logo"></a>
+            <h1>Traffic violations & fines</h1>
+        </div>
+        <div class="whitespace"></div>
+        <div id="links">
+            <a href="user.php" class="nav-btn">Back</a>
+        </div>
+    </header>
     <table cellspacing = "2" cellpadding = "2">
         <tr>
             <th style=font-size:12px>SL.NO</th>
@@ -44,7 +55,7 @@
     <button id="back">Back</button>
     <script type="text/javascript">
         document.getElementById("back").onclick = function () {
-            location.href = "/user.php";
+            location.href = "user.php";
         };
     </script>
 </body>

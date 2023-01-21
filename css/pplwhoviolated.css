@@ -1,0 +1,23 @@
+.btn {
+    padding: 1em;
+    border-radius: 1.5em;
+    width: 20em;
+    margin: 1em auto;
+    cursor: pointer;
+    background-color: rgb(207,6,6);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    display: block;
+}
+.btn:hover {
+    background-color: rgb(137, 5, 5);
+}
+#btn-wrapper {
+    text-align: center;
+    margin: 0 auto;
+}
+
+form input[class='btn'] {
+    border: none;
+}

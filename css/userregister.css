@@ -1,0 +1,14 @@
+.btn {
+    padding: 1em;
+    border-radius: 1.5em;
+    width: 20em;
+    margin: 1em auto;
+    cursor: pointer;
+    background-color: rgb(207,6,6);
+    color: white;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-weight: 600;
+}
+#submit-wrapper {
+    text-align: center;
+}

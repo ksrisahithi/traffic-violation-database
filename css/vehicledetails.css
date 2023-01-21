@@ -1,0 +1,42 @@
+td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+#regtable {
+    border: none;
+}
+#reg-box {
+    width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+.veh-no {
+    height: 2em;
+    padding: 0 1em;
+}
+#submit {
+    padding: 1em;
+    border-radius: 1.5em;
+    border: none;
+    background-color: lightgray;
+    font-weight: 600;
+    cursor: pointer;
+}
+#submit:hover {
+    background-color: rgb(189, 189, 189);
+}
+#veh-details {
+    max-width: 80%;
+    text-align: center;
+    margin: 1em auto;
+    display: none;
+}
+#details-table {
+    margin: 0 auto;
+}
+td {
+    padding: 0 0.5em 0.5em 0.5em;
+}
+td:nth-child(odd) {
+    text-align: right;
+}

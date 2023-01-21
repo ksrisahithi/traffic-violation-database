@@ -1,5 +1,3 @@
-<!-- THE TRAFFIC POLICEMAN REGISTER FORM (DATABASE WORKS!) -->
-<!-- STILL NEED TO STYLE THE PAGE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/title.css">
+    <link rel="stylesheet" href="css/trfregister.css">
     <title>TRVMS Traffic Police Registeration</title>
 </head>
 <body>
-
-<div class="container-lg">
+    <header>
+        <div class="loti">
+            <a href="index.php"><img src="assests/logo.png" alt="Logo" id="logo"></a>
+            <h1>Register Officer</h1>
+        </div>
+        <div class="whitespace"></div>
+        <div id="links">
+            <a href="trfperson.php" class="nav-btn">Back</a>
+        </div>
+    </header>
+    <div id="reg-form-container">
         <div class="row justify-content-center">
             <div class="col-sm-6">
                 <form name="registerform" action="trfregister.php" onsubmit = "return validation()" method="post">
@@ -39,12 +47,12 @@
                             <option value="central">CENTRAL</option>
                         </select> <br>
                         <label for="pwd" class="form-label">PASSWORD</label><br>
-                        <input type="password" name="pwd" id="pwd" class="form-control"><br>
-                        <input type="checkbox" onclick="showPassword('pwd')">Show Password<br>
+                        <input type="password" name="pwd" id="pwd" class="form-control">
+                        <input type="checkbox" onclick="showPassword('pwd')">Show Password<br><br>
                         <label for="cnfpwd" class="form-label">CONFIRM PASSWORD</label><br>
-                        <input type="password" name="cnfpwd" id="cnfpwd" class="form-control"><br>
+                        <input type="password" name="cnfpwd" id="cnfpwd" class="form-control">
                         <input type="checkbox" onclick="showPassword('cnfpwd')">Show Password<br>
-                        <input type="submit" name= "submit" id = "submit" value="submit">
+                        <div id="submit-wrapper"><input class="btn" type="submit" name= "submit" id = "submit" value="Submit"></div>
                     </fieldset>
                 </form>
             </div>
@@ -60,7 +68,6 @@
             }
         }
     </script>
-
 </body>
 </html>
 <?php
@@ -79,14 +86,13 @@
                 session_destroy();  
             } else {  
                 $id = $_POST['id'];
-                //echo($id."<br>"); 
             } 
         }
         else{
             echo("the id field cant be empty");
         }
 
-        //name validation OK BRO THIS TING WORKS SOMEWHAT// BUT YOU CANNOT PUT FULL NAME WITH WHITESPACES
+        //name validation 
         if(!empty($_POST['name'])){
             if (!name_validation($_POST['name'])) {  
                 $ErrMsg = "Only alphabets and whitespace are allowed.";  
@@ -94,9 +100,6 @@
                 session_destroy();
             } else {  
                 $name = $_POST['name'];
-                //$name = trim($name);
-                //$name = stripslashes($name);
-                //$name = htmlspecialchars($name);
                 echo($name."<br>");
             } 
         }
@@ -106,7 +109,7 @@
 
         //zone
         $zone_ = $_POST['zone'];
-        //echo($zone_."<br>");
+
         //designation
         $desg = $_POST['desg'];
 
@@ -117,25 +120,16 @@
                 $cnfpwd = $_POST['cnfpwd'];
                 $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
                 $hash_cnfpwd = password_hash($cnfpwd, PASSWORD_BCRYPT);
-                //echo($hash_pwd."<br>");
-                //echo($hash_cnfpwd."<br>");
+
                 if(password_verify($pwd, $hash_pwd) === password_verify($cnfpwd, $hash_pwd)){
                     echo("the passwords match<br>");
                     $conn = open_conn();
                     $sql = "INSERT INTO traffic_police VALUES($id, '$name', '$desg', '$zone_', '$hash_pwd')";
                     $result = $conn->query($sql);
                     if($result){
-                        //echo("the thing works<br>");
-                        $_SESSION['is_login'] = true;
-                        $_SESSION['name'] = $name;
-                        $_SESSION['id'] = $id;
                         header("Location: trfperson.php");
                     }
                     else{
-                        //echo("the thing dont work<br>");
-                         //<<<---- this should redirect, but it is not working----<<<<<
-                        //exit;
-                        //echo("<script type='text/javascript'>window.top.location='trfperson.php';</script>"); exit;
                         echo("the query didnt work<br>");
                     }
                 }

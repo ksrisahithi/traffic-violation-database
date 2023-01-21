@@ -1,0 +1,88 @@
+#userDetails {
+    text-align: center;
+    margin-bottom: 1em;
+}
+.btn {
+    padding: 1em;
+    border-radius: 1.5em;
+    width: 20em;
+    margin: 1em auto;
+    cursor: pointer;
+    background-color: #3131a3;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+}
+.grayBtn {
+    background-color: lightgray;
+    padding: 0.5em;
+    border-radius: 1em;
+    width: 8em;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.form-popup{
+    display:none;
+}
+.button {
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    border: none;
+    background-color: lightgray;
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+.input-box {
+    padding: 0.5em;
+}
+#proceedToPayBtn {
+    background-color: lightgray;
+    width: fit-content;
+    padding: 0.5em 2em;
+    border-radius: 1.5em;
+    cursor: pointer;
+}
+#flexHor {
+    display: flex;
+    margin: 0 auto 1em auto;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1em;
+    width: fit-content;
+}
+#viewVioDetails {
+    display: none;
+}
+#vvdTable {
+    margin: 1em auto;
+    width: fit-content;
+    
+    border-collapse: collapse;
+}
+th, td {
+    border-bottom: 1px solid black;
+    padding: 0.5em 1em;
+}
+th {
+    background-color: lightgray;
+}
+#payMessages {
+    margin-top: 1em;
+}
+
+#userMsg {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 1em;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 3px solid red;
+}
+
+#userMsg i {
+    /* color: rgb(207,6,6); */
+    color: red;
+}
