@@ -57,12 +57,9 @@
                 echo("the query worked<br>");
                 $row = $result->fetch_assoc();
                 if($aadharno === $row['aadhar_no'] && password_verify($pwd, $row['passwd'])){                    
-                    //echo("there is the user<br>");
                     $_SESSION['is_login'] = true;
                     $_SESSION['aadhar_no'] = $row['aadhar_no'];
                     $_SESSION['legal_name'] = $row['legal_name'];
-                    //echo("the fetching did work");
-                    //echo($_SESSION['aadhar_no']);
                     header("Location: user.php");
                 }
                 else{

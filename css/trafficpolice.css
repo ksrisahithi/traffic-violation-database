@@ -1,0 +1,37 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size:12px;
+}
+table {
+    width: fit-content;
+    margin: 0 auto;
+}
+th, td {
+    padding: 0.5em 1em;
+}
+#tp-form {
+    width: fit-content;
+    margin: 1em auto;
+    text-align: center;
+}
+#id {
+    margin-right: 1em;
+    height: 2em;
+    padding: 0 1em;
+}
+#submit {
+    padding: 1em;
+    border-radius: 1.5em;
+    cursor: pointer;
+    border: none;
+    background-color: lightgray;
+    font-weight: 600;
+    margin-top: 1em;
+}
+#submit:hover {
+    background-color: rgb(188, 188, 188);
+}
+#message {
+    margin-top: 1em;
+}

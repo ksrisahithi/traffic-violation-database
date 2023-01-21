@@ -5,11 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="css/title.css">
+    <link rel="stylesheet" href="css/userregister.css">
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <title>TRVMS User Registeration</title>
 </head>
 <body>
-
+<header>
+        <div class="loti">
+            <a href="index.php"><img src="assests/logo.png" alt="Logo" id="logo"></a>
+            <h1>User Register</h1>
+        </div>
+        <div class="whitespace"></div>
+        <div id="links">
+            <a href="trfperson.php" class="nav-btn">Back</a>
+        </div>
+    </header>
 <div class="container-lg">
         <div class="row justify-content-center">
             <div class="col-sm-6">
@@ -26,7 +37,7 @@
                         <label for="cnfpwd" class="form-label">CONFIRM PASSWORD</label><br>
                         <input type="password" name="cnfpwd" id="cnfpwd" class="form-control"><br>
                         <input type="checkbox" onclick="showPassword('cnfpwd')">Show Password<br>
-                        <input type="submit" name= "register" id = "register" value="Register">
+                        <div id="submit-wrapper"><input type="submit" name= "register" id = "register" value="Register" class="btn"></div>
                     </fieldset>
                 </form>
             </div>
@@ -59,7 +70,6 @@
             $temp = $aadharno;
             $temp = strval($temp);
             $temp = str_replace(" ", "", $temp);
-            //$temp = intval($temp);
             return $temp;
         }
     }
@@ -67,14 +77,12 @@
     if(isset($_POST['register'])){
         echo("hello the register button has been pressed<br>");
         if(!empty($_POST['aadharno'])){
-            //$temp = aadhar($_POST['aadharno']);
             if (!preg_match ("/^[0-9]*$/", aadhar($_POST['aadharno'])) ){  
                 $ErrMsg = "Only numeric value is allowed for id.";  
                 echo $ErrMsg;
                 session_destroy();  
             } else {  
                 $aadharno = aadhar($_POST['aadharno']);
-                //echo($aadharno."<br>");
             } 
         }
         if(!empty($_POST['name'])){
@@ -84,7 +92,6 @@
                 session_destroy();
             } else {  
                 $name = $_POST['name'];
-                //echo($name."<br>");
             } 
         }
         if($aadharno && $name){
@@ -93,26 +100,20 @@
                 $cnfpwd = $_POST['cnfpwd'];
                 $hash_pwd = password_hash($pwd, PASSWORD_BCRYPT);
                 $hash_cnfpwd = password_hash($cnfpwd, PASSWORD_BCRYPT);
-                //echo($hash_pwd."<br>");
-                //echo($hash_cnfpwd."<br>");
                 if(password_verify($pwd, $hash_pwd) === password_verify($cnfpwd, $hash_pwd)){
                     echo("the passwords match<br>");
                     $conn = open_conn();
                     $sql = "INSERT INTO user VALUES('$aadharno', '$hash_pwd', '$name')";
                     $result = $conn->query($sql);
                     if($result){
-                        //echo("the thing works<br>");
                         $_SESSION['is_login'] = true;
                         $_SESSION['name'] = $name;
                         $_SESSION['aadharno'] = $aadharno;
                         header("Location: user.php");
                     }
                     else{
-                        //echo("the thing dont work<br>");
-                         //<<<---- this should redirect, but it is not working----<<<<<
-                        //exit;
-                        //echo("<script type='text/javascript'>window.top.location='trfperson.php';</script>"); exit;
                         echo("the query didnt work<br>");
+                        echo($conn->error);
                     }
                 }
                 else{

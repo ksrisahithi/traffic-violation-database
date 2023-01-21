@@ -9,32 +9,31 @@
     }
 ?>
 <html>
-    <title>People's violation</title>
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/pplwhoviolated.css">
+        <link rel="stylesheet" href="css/title.css">
+        <title>People's violation</title>
     </head>
     <body>
+        <header>
+            <div class="loti">
+                <a href="index.php"><img src="assests/logo.png" alt="Logo" id="logo"></a>
+                <h1>Add / remove violations</h1>
+            </div>
+            <div class="whitespace"></div>
+            <div id="links">
+                <a href="trfperson.php" class="nav-btn">Back</a>
+            </div>
+        </header>
     <form action = "pplwhoviolated.php" method = 'POST'>
-    <input type="submit" name="view" value="VIEW ppl who violated"/><br><br>
-    <?php  
-        if(isset($_POST['view'])){
-            /*
-            $conn = open_conn();
-            //revise the query
-            $sql = "SELECT p.traffic_tkt_no, p.reg_no, p.violation_id, q.violation_name FROM ppl_who_violated p, violation q WHERE p.violation_id = q.violation_id";
-            $result = $conn->query($sql);
-            if($result){
-                //too much time for making that stuff get displayed
-                echo("if the query works<br>");
-            }
-            else{
-                echo($conn->error."<br>");
-            }
-            close_conn($conn);
-            */
-            header("Location: viewpplwhoviolated.php");
-        }
-    ?>
-    <input type = "submit" name = "add" value = "ADD ppl who violated"/><br><br>
+    <btn-wrapper>
+        <input class="btn" type = "submit" name = "add" value = "ADD ppl who violated"/>
+        <input class="btn" type = "submit" name = "rm" value = "REMOVE ppl who violated"/>
+    </btn-wrapper>
+    </form>
     <?php
         if(isset($_POST['add'])){
             //create a form and include the required fields for ppl who violated table
@@ -42,21 +41,12 @@
             //should also work on the sorting of this list and stuff but for now this much is enough ig
             header("Location: addpplwhoviolated.php");
         }
-    ?>
-    <input type = "submit" name = "rm" value = "REMOVE ppl who violated"/><br><br>
-    <?php
+
         if(isset($_POST['rm'])){
             //this should just include the register number or some primary key initialization and then
             //its just removing nothing much
             header("Location: rmpplwhoviolated.php");
         }
     ?>
-    </form>
-    <button id="back">Back</button>
-    <script type="text/javascript">
-        document.getElementById("back").onclick = function () {
-            location.href = "/trfperson.php";
-        };
-    </script>
     </body>
 </html>

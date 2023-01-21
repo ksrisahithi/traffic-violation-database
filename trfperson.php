@@ -59,7 +59,12 @@
         <div class="card">
             <img src="assests/6387982.jpg" alt="">
             <p>Issue traffic violation fines or view violations.</p>
-            <a href="pplwhoviolated.php">view/add violations</a>
+            <a href="addpplwhoviolated.php">add violations</a>
+        </div>
+        <div class="card">
+            <img src="assests/6387982.jpg" alt="">
+            <p>Issue traffic violation fines or view violations.</p>
+            <a href="rmpplwhoviolated.php">remove violations</a>
         </div>
     </div>
 </body>

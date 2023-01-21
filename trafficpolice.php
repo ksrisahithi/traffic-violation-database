@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/trafficpolice.css">
+    <link rel="stylesheet" href="css/title.css">
     <title>Traffic Police</title>
-    <style>
-        table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        font-size:12px;
-        }
-    </style>
 </head>
 <body>
-    <h3>TRAFFIC POLICE<br></h3>
-    <form action = "trafficpolice.php" method = "POST">
-        <label for = "id_" class = "form label">ENTER THE ID OF THE OFFICER</label><br>
-        <input type = "text" name = "id" id = "id">
-        <input type="submit" name= "submit" id = "submit" value="submit">
-    </form>
+    <header>
+        <div class="loti">
+            <a href="index.php"><img src="assests/logo.png" alt="Logo" id="logo"></a>
+            <h1>View Offcer Details</h1>
+        </div>
+        <div class="whitespace"></div>
+        <div id="links">
+            <a href="trfperson.php" class="nav-btn">Back</a>
+        </div>
+    </header>
+    <div id="tp-form">
+        <form action = "trafficpolice.php" method = "POST">
+            <label for = "id_" class = "form label">Enter the ID of the officer: </label>
+            <input type = "text" name = "id" id = "id"><br>
+            <input type="submit" name= "submit" id = "submit" value="Submit">
+        </form>
+        <p id="message"></p>
+    </div>
+    
     <?php
         session_start();
         ob_start();
@@ -35,8 +43,8 @@
                 $conn = open_conn();
                 $sql = "SELECT * FROM traffic_police WHERE id = $id";
                 $result = $conn->query($sql);
-                if($result){
-                    echo("<table cellspacing = \"2\" cellpadding = \"2\">
+                if($result->num_rows === 1){
+                    echo("<table>
                         <tr>
                             <th>ID</th>
                             <th>NAME</th>
@@ -51,22 +59,12 @@
                         echo("<td>".$row['designation']."</td>");
                         echo("<td>".$row['zone_']."</td>");
                     }
-                $result->free();
+                    $result->free();
+                } else {
+                    echo("<script>document.getElementById('message').innerHTML = 'No officer with ID ".$id."'</script>");
                 }
             }
         }
     ?>
-    <button id="back">Back</button><br><br>
-    <script type="text/javascript">
-        document.getElementById("back").onclick = function () {
-            location.href = "/trfperson.php";
-        };
-    </script>
-    <button id="trfreg" class="float-left submit-button" >add traffic person</button><br><br>
-    <script type="text/javascript">
-        document.getElementById("trfreg").onclick = function () {
-            location.href = "/trfregister.php";
-        };
-    </script>
 </body>
 </html>

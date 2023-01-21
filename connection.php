@@ -13,5 +13,4 @@
     function close_conn($conn){
         $conn->close();
     }
-    //echo("<h1>you are at the php file that has the database connection THIS SHOULDNT BE SHOWN AT THE INDEX PAGE THO, nvm it works<h1>");
 ?>
