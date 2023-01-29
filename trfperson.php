@@ -47,7 +47,7 @@
             <a href="trfregister.php">add traffic police</a>
         </div>
         <div class="card">
-            <img src="assests/6387974.jpg" alt="">
+            <img src="assests/icon-inventory-vehicle.svg" alt="">
             <p>View user's vehicle details.</p>
             <a href="vehicledetails.php">view vehicle details</a>
         </div>
@@ -57,12 +57,12 @@
             <a href="trafficpolice.php">view traffic police</a>
         </div>
         <div class="card">
-            <img src="assests/6387982.jpg" alt="">
+            <img src="assests/20946025.jpg" alt="">
             <p>Issue traffic violation fines or view violations.</p>
             <a href="addpplwhoviolated.php">add violations</a>
         </div>
         <div class="card">
-            <img src="assests/6387982.jpg" alt="">
+            <img src="assests/20946030.jpg" alt="">
             <p>Issue traffic violation fines or view violations.</p>
             <a href="rmpplwhoviolated.php">remove violations</a>
         </div>

@@ -21,17 +21,18 @@
     </header>
     <div id="reg-box">
         <h3>Enter registration number</h3><br>
-        <form action = "vehicledetails.php" method = "POST">
-            <input class="veh-no" type = "text" name = "state" id = "state" maxlength = "2" size = "2">
-            <input class="veh-no" type="text" name="no" id = "no" maxlength = "2" size = "2">
-            <input class="veh-no" type="text" name="somed" id = "somed" maxlength = "2" size = "2">
-            <input class="veh-no" type="text" name="no1" id= "no1" maxlength = "4" size = "2"><br><br>
+        <form action = "vehicledetails.php" method = "POST" name = "vehicledets">
+            <input class="veh-no" type = "text" name = "state" id = "state" >
+            <input class="veh-no" type="text" name="no" id = "no">
+            <input class="veh-no" type="text" name="somed" id = "somed">
+            <input class="veh-no" type="text" name="no1" id= "no1"><br><br>
             <input type="submit" name= "submit" id = "submit" value="submit">
         </form>
     </div>
     <div id="veh-details">
         <h3>Details of Vehicle No: <span id="vehno"></span></h3>
     </div>
+    <script src="js/regno.js"></script>
 </body>
 </html>
 <?php
@@ -40,7 +41,7 @@
     ob_end_clean();
     if(isset($_POST['submit'])){
         if(empty($_POST['state']) && empty($_POST['no']) && empty($_POST['somed']) && empty($_POST['no1']) && !is_int($_POST['no']) && !is_int($_POST['no1'])) {
-            echo("enter the valid details");
+            echo("<script>alert('Enter the valid details')</script>");;
         }
         else {
             $state = strtolower($_POST['state']);
@@ -51,7 +52,7 @@
             $conn = open_conn();
             $sql = "SELECT * FROM vehicle_details where reg_no = '$regno'";
             $result = $conn->query($sql);
-            if($result){
+            if($result -> num_rows > 0){
                 echo("<script>document.getElementById('veh-details').style.display = 'block';</script>");
                 $row = $result->fetch_assoc();
                 echo("<script>document.getElementById('vehno').innerText = '".$row['reg_no']."'</script>");
@@ -110,7 +111,7 @@
                         </tr>");
             }
             else {
-                echo("the query is not working");
+                echo("<script>alert('Registration number not found')</script>");
             }
         }
     }

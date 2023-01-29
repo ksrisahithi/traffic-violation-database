@@ -33,7 +33,7 @@
 
     function aadhar_validation($aadharno){
         $aadharno = aadhar($aadharno);
-        if (!preg_match ("/^[0-9]{12}$/", $aadharno) ){  
+        if (!preg_match ("/(^[0-9]{4}[0-9]{4}[0-9]{4}$)|(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)/", $aadharno) ){  
             return false;
         } else {  
             return true; 

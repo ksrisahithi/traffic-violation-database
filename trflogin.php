@@ -11,8 +11,8 @@
     <header>
         <a href="index.php"><img src="assests/logo.png" alt="Logo" id="logo"></a>
         <div id="links">
-            <a href="#" class="nav-btn">About</a>
-            <a href="#" class="nav-btn">Source Code</a>
+            <a href="https://github.com/ksrisahithi/traffic-violation-database/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="nav-btn">About</a>
+            <a href="https://github.com/ksrisahithi/traffic-violation-database" target="_blank" rel="noopener noreferrer" class="nav-btn">Source Code</a>
         </div>
     </header>
     <div id="content">
@@ -21,7 +21,7 @@
             <form name="loginform" action="trflogin.php" onsubmit = "return validation()" method="post">
                 <label for="id">ID</label><br>
                 <div class="input-box">
-                    <input type="text" name="id" id="id">
+                    <input type="number" min="0" name="id" id="id">
                 </div>
                 <label for="pwd">PASSWORD</label><br>
                 <div class="input-box">

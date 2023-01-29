@@ -22,7 +22,7 @@
     <div id="tp-form">
         <form action = "trafficpolice.php" method = "POST">
             <label for = "id_" class = "form label">Enter the ID of the officer: </label>
-            <input type = "text" name = "id" id = "id"><br>
+            <input type = "number" name = "id" id = "id"><br>
             <input type="submit" name= "submit" id = "submit" value="Submit">
         </form>
         <p id="message"></p>

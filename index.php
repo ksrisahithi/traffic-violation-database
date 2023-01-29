@@ -23,8 +23,8 @@
     <header>
         <img src="/assests/logo.png" alt="Logo" id="logo">
         <div id="links">
-            <a href="https://github.com/ksrisahithi/traffic-violation-database/blob/main/README.md" class="nav-btn">About</a>
-            <a href="https://github.com/ksrisahithi/traffic-violation-database" class="nav-btn">Source Code</a>
+            <a href="https://github.com/ksrisahithi/traffic-violation-database/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="nav-btn">About</a>
+            <a href="https://github.com/ksrisahithi/traffic-violation-database" target="_blank" rel="noopener noreferrer" class="nav-btn">Source Code</a>
         </div>
     </header>
     <div id="content">
