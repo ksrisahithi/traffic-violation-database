@@ -13,7 +13,15 @@ td {
 .veh-no {
     height: 2em;
     padding: 0 1em;
+    width: 5em;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 #submit {
     padding: 1em;
     border-radius: 1.5em;

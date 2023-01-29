@@ -12,8 +12,8 @@
     <header>
         <a href="index.php"><img src="/assests/logo.png" alt="Logo" id="logo"></a>
         <div id="links">
-            <a href="#" class="nav-btn">About</a>
-            <a href="#" class="nav-btn">Source Code</a>
+            <a href="https://github.com/ksrisahithi/traffic-violation-database/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="nav-btn">About</a>
+            <a href="https://github.com/ksrisahithi/traffic-violation-database" target="_blank" rel="noopener noreferrer" class="nav-btn">Source Code</a>
         </div>
     </header>
     <div id="content">
@@ -22,7 +22,7 @@
             <form name="loginform" action="userlogin.php" onsubmit = "return validation()" method="post">
                 <label for="aadharno">Aadhar Number</label><br>
                 <div class="input-box">
-                    <input type="text" name="aadharno" id="aadharno">
+                    <input type="number" name="aadharno" id="aadharno">
                 </div>
                 <label for="pwd">Password</label><br>
                 <div class="input-box">

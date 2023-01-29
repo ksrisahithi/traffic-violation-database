@@ -10,7 +10,7 @@
 
     //name validation
     function name_validation($name){
-        if (!preg_match ("/^[a-zA-z]*$/",$name)) {  
+        if (!preg_match ("/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/",$name)) {  
             return false;
         } else {  
             return true;
@@ -33,7 +33,7 @@
 
     function aadhar_validation($aadharno){
         $aadharno = aadhar($aadharno);
-        if (!preg_match ("/^[0-9]{12}$/", $aadharno) ){  
+        if (!preg_match ("/(^[0-9]{4}[0-9]{4}[0-9]{4}$)|(^[0-9]{4}\s[0-9]{4}\s[0-9]{4}$)/", $aadharno) ){  
             return false;
         } else {  
             return true; 

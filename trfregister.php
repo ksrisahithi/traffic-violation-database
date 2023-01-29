@@ -27,31 +27,31 @@
                     <fieldset class="border p-2">
                         <legend class="float-none w-auto p-2">REGISTER</legend>
                         <label for="id" class="form-label">ID</label><br>
-                        <input type="text" name="id" id="id" class="form-control"><br>
+                            <input type="number" min="0" name="id" id="id" class="form-control"><br>
                         <label for="name" class="form-label">NAME</label><br>
-                        <input type="text" name="name" id="name" class="form-control"><br>
+                            <input type="text" name="name" id="name" class="form-control"><br>
                         <label for="desg" class="form-label">DESIGNATION</label><br>
-                        <select name="desg" id="desg" class="form-select">
-                            <option value="asi">ASI</option>
-                            <option value="psi">PSI</option>
-                            <option value="pi">PI</option>
-                            <option value="dgp">DGP</option>
-                        </select> <br>
+                            <select name="desg" id="desg" class="form-select">
+                                <option value="asi">ASI</option>
+                                <option value="psi">PSI</option>
+                                <option value="pi">PI</option>
+                                <option value="dgp">DGP</option>
+                            </select> <br>
                         <label for="zone" class="form-label">ZONE</label><br>
-                        <select name="zone" id="zone" class="form-select">
-                            <option value="north">NORTH</option>
-                            <option value="south">SOUTH</option>
-                            <option value="northeast">NORTHEAST</option>
-                            <option value="southeast">SOUTHEAST</option>
-                            <option value="west">WEST</option>
-                            <option value="central">CENTRAL</option>
-                        </select> <br>
+                            <select name="zone" id="zone" class="form-select">
+                                <option value="north">NORTH</option>
+                                <option value="south">SOUTH</option>
+                                <option value="northeast">NORTHEAST</option>
+                                <option value="southeast">SOUTHEAST</option>
+                                <option value="west">WEST</option>
+                                <option value="central">CENTRAL</option>
+                            </select> <br>
                         <label for="pwd" class="form-label">PASSWORD</label><br>
-                        <input type="password" name="pwd" id="pwd" class="form-control">
-                        <input type="checkbox" onclick="showPassword('pwd')">Show Password<br><br>
+                            <input type="password" name="pwd" id="pwd" class="form-control">
+                            <input type="checkbox" onclick="showPassword('pwd')">Show Password<br><br>
                         <label for="cnfpwd" class="form-label">CONFIRM PASSWORD</label><br>
-                        <input type="password" name="cnfpwd" id="cnfpwd" class="form-control">
-                        <input type="checkbox" onclick="showPassword('cnfpwd')">Show Password<br>
+                            <input type="password" name="cnfpwd" id="cnfpwd" class="form-control">
+                            <input type="checkbox" onclick="showPassword('cnfpwd')">Show Password<br>
                         <div id="submit-wrapper"><input class="btn" type="submit" name= "submit" id = "submit" value="Submit"></div>
                     </fieldset>
                 </form>
@@ -89,7 +89,7 @@
             } 
         }
         else{
-            echo("the id field cant be empty");
+            echo("<script>alert('Id field can't be empty')</script>");
         }
 
         //name validation 
@@ -104,7 +104,7 @@
             } 
         }
         else{
-            echo("the name field cant be empty");
+            echo("<script>alert('Name field can't be empty')</script>");
         }
 
         //zone
@@ -114,7 +114,7 @@
         $desg = $_POST['desg'];
 
         //password validation
-        if($id && $name){
+        if(!empty($_POST['id']) && !empty($_POST['name'])){
             if(!empty($_POST['pwd']) && !empty($_POST['cnfpwd'])){
                 $pwd = $_POST['pwd'];
                 $cnfpwd = $_POST['cnfpwd'];
@@ -151,7 +151,7 @@
             }
         }
         else{
-            echo("dont leave the id or the name field empty<br>");
+            echo("<script>alert('dont leave the id or name field empty')</script>");
         }
     }
 ?>
