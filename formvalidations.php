@@ -10,7 +10,7 @@
 
     //name validation
     function name_validation($name){
-        if (!preg_match ("/^[A-Za-z\s]{1,}[\.]{0,1}[A-Za-z\s]{0,}$/",$name)) {  
+        if (!preg_match ("/^[A-Za-z][A-Za-z\'\-]+([\ A-Za-z][A-Za-z\'\-]+)*/",$name)) {  
             return false;
         } else {  
             return true;
